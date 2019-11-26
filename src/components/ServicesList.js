@@ -16,12 +16,16 @@ class ServicesListComponent extends Component {
     return (
       <ul className="dropdown-menu order-dropdown" aria-labelledby="membersDropdown">
         {
-          this.props.services.map(service => {
+          this.props.services.map((service, idx) => {
+            let serviceType = service['serviceType'];
+            let loc = service['location'];
+            let serviceLocation = serviceType === 'local' ? loc : env.rcsUrl.concat(loc);
+
             return (
-              <li className="btn btn-link">
-                <a className="btn btn-link dropdown-item" href={env.rcsUrl.concat(service['location'])}
-                   target="_blank" rel="noopener noreferrer">
-                    {services[service['serviceType']]}
+              <li className="btn btn-link dropdown-item" key={idx}>
+                <a className="btn btn-link" href={serviceLocation} target="_blank"
+                   rel="noopener noreferrer">
+                    {services[serviceType]}
                 </a>
               </li>
             );
