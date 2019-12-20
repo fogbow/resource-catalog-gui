@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import MembersListComponent from '../components/MembersList';
+import ConfigMenuComponent from '../components/ConfigMenu';
 import CatalogProvider from '../providers/catalog.provider';
 
 import '../styles/main.css'
@@ -67,7 +68,7 @@ class MainPage extends Component {
         <div className='row main-view'>
           <div className='col'>
             <h1>Fogbow Resource Catalog Service</h1>
-            <p>Select a federation member below to check its services catalog:</p>
+            <ConfigMenuComponent catalog={this.state.catalog}/>
             <MembersListComponent catalog={this.state.catalog} className="members-list"/>
           </div>
         </div>
